@@ -1,7 +1,9 @@
 const mainText = document.querySelector('.main-txt');
 const btnReveal = document.querySelector('.btn-reveal');
 const btnShuffle = document.querySelector('.btn-shuffle');
+const toShuffle = 'NASYONALISMO';
 let intervalChange;
+let isShuffling = false;
 
 const f = (arr = []) => {
     const ran = Math.floor(Math.random() * 12) 
@@ -27,7 +29,7 @@ const s = (a, shufflePos = []) => {
     return newA;
 };
 const h = () => {
-    const a = 'NASYONALISMO';
+    const a = toShuffle;
     const shufflePos = p(a);
     mainText.innerHTML = s(a, shufflePos);
 }
@@ -40,11 +42,24 @@ const shuff = () => {
 };
 
 
+
 btnReveal.addEventListener('click', () => {
-    clearInterval(intervalChange)
-    mainText.innerHTML = 'NASYONALISMO';
+    clearInterval(intervalChange);
+    isShuffling = false;
+    btnShuffle.innerHTML = 'Shuffle'
+    mainText.innerHTML = toShuffle;
 });
-btnShuffle.addEventListener('click', () => shuff());
+btnShuffle.addEventListener('click', () => {
+    if(isShuffling) {
+        clearInterval(intervalChange);
+        isShuffling = false;
+        return btnShuffle.innerHTML = 'Shuffle'
+    }
+    isShuffling = true;
+    btnShuffle.innerHTML = 'Unshuffle'
+    shuff();
+    
+});
 
 window.onload = (e) => {
     h();

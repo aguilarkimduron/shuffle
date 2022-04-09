@@ -1,18 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 *{
     font-family: 'Open Sans', sans-serif;
+    margin: 0;
 }
 .container{
-    height: 98vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: url('background-img.jpg');
 }
 .main-txt{
+    color: whitesmoke;
+    text-shadow: .03em .03em 0 hsl(200 50% 30%);
     font-size: 7em;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.3em;
 }
 .btn-container{
